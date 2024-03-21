@@ -1,8 +1,16 @@
 {
+	/* 
+!	**IMPORTANT WARNING** (Please read before enabling obfuscation and minification)
+*	Obfuscation and minification are AGAINST the FiveM ToS if you have the intention of releasing the built files without the original source code.
+?	This is ONLY intended for developers who create scripts for their own servers and want to protect their code from being stolen, or reverse-engineered.
+!	By enabling obfuscation and minification, you agree to take full responsibility for any consequences that may arise from using this feature.
+!	You also agree to not release the built files to the public, unless you have the original source code available for download.
+	*/
 	obfuscate: false, // Enable obfuscation for the built files
-	minify: true, // Enable minification for the built files (Recommended)
+	minify: false, // Enable minification for the built files
 
-	output: "./output", // The directory where the built files will be placed (absolute or relative)
+	// Output can be used to automatically move your files to your server's resource folder. (e.g. "C:/FXServer/server-data/resources/"). This is a huge time-saver!
+	output: "./output", // The directory where the built files will be placed (absolute or relative).
 
 	/* 
 		Below are the default files/folders that are copied to the output directory. "{OUT}" is replaced with the output directory.
@@ -12,11 +20,11 @@
 	*/
 
 	copy: [
-		{ from: "fxmanifest.lua", to: "{OUT}/" },
-		{ from: "config.json", to: "{OUT}/" },
-		{ from: "dist/**/*", to: "{OUT}/dist/" },
-		{ from: "stream/**/*", to: "{OUT}/stream/" },
-		{ from: "nui/**/*", to: "{OUT}/nui/" },
-		{ from: "data/**/*", to: "{OUT}/data/" },
+		{ from: "fxmanifest.lua", to: "{OUT}/" }, // Default file
+		{ from: "config.json", to: "{OUT}/" }, // Default file
+		{ from: "dist/**/*", to: "{OUT}/dist/" }, // Default directory
+		{ from: "stream/**/*", to: "{OUT}/stream/" }, // For streamed assets (must be created manually if you're streaming assets)
+		{ from: "nui/**/*", to: "{OUT}/nui/" }, // For NUI (This can be used for UI that you create yourself via HTML, CSS, JS, or our boilerplate React UI template.)
+		{ from: "data/**/*", to: "{OUT}/data/" }, // For data files (e.g. .meta files, .xml files, etc.)
 	],
 }
