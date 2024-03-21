@@ -19,23 +19,27 @@ Installation has been made easy with the use of our CLI tool. Simply run one of 
 
 **Note**: PNPM is the recommended package manager for this project, as it has the best performance and disk space usage. This has not been tested with other package managers, so use them at your own risk.
 
-```bash
-# NPM
-npx create-fivem-ts@latest
-```
+**PNPM**
 
 ```bash
-# Yarn
-yarn create fivem-ts@latest
-```
-
-```bash
-# PNPM
 pnpm create fivem-ts@latest
 ```
 
+**NPM**
+
 ```bash
-# Bun
+npx create-fivem-ts@latest
+```
+
+**Yarn**
+
+```bash
+yarn create fivem-ts@latest
+```
+
+**Bun**
+
+```bash
 bun create fivem-ts@latest
 ```
 
