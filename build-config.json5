@@ -1,0 +1,22 @@
+{
+	obfuscate: false, // Enable obfuscation for the built files
+	minify: true, // Enable minification for the built files (Recommended)
+
+	output: "./output", // The directory where the built files will be placed (absolute or relative)
+
+	/* 
+		Below are the default files/folders that are copied to the output directory. "{OUT}" is replaced with the output directory.
+        **WARNING**: If "{OUT}" is not present in the "to" field, this WILL BREAK THINGS. Be careful when editing these.
+		If something below does not exist, it will not be copied.
+		You can add/remove files/folders as you wish, but make sure it follows the format below.
+	*/
+
+	copy: [
+		{ from: "fxmanifest.lua", to: "{OUT}/" },
+		{ from: "config.json", to: "{OUT}/" },
+		{ from: "dist/**/*", to: "{OUT}/dist/" },
+		{ from: "stream/**/*", to: "{OUT}/stream/" },
+		{ from: "nui/**/*", to: "{OUT}/nui/" },
+		{ from: "data/**/*", to: "{OUT}/data/" },
+	],
+}

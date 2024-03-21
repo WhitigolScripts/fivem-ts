@@ -1,0 +1,5 @@
+{
+	"watch": ["config.json"],
+	"exec": "node scripts/quickType.mjs",
+	"quiet": true
+}

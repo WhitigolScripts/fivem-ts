@@ -1,0 +1,35 @@
+{
+	"name": "@whitigol/fivem-ts",
+	"version": "1.0.0",
+	"description": "A TypeScript boilerplate for FiveM resources.",
+	"scripts": {
+		"build": "cross-env NODE_ENV=production node ./scripts/build.mjs",
+		"dev": "concurrently \"node ./scripts/build.mjs --watch\" \"nodemon\" \"node scripts/build-ui.mjs\" --kill-others --success first --prefix name --names \"SCRIPT,CONFIG,UI\" --prefix-colors \"blue.bold,magenta.bold,green.bold\"",
+		"test": "node scripts/test.mjs",
+		"add-ui": "pnpm dlx @whitigol/create-fivem-ui"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@citizenfx/client": "latest",
+		"@citizenfx/server": "latest",
+		"@types/node": "^20.11.30",
+		"@whitigol/fivem-utils": "^1.1.1",
+		"@whitigol/menu-api": "latest",
+		"chalk": "^5.3.0",
+		"concurrently": "^8.2.2",
+		"copy": "^0.3.2",
+		"cross-env": "^7.0.3",
+		"dotenv": "^16.4.5",
+		"javascript-obfuscator": "^4.1.0",
+		"json5": "^2.2.3",
+		"nodemon": "^3.1.0",
+		"ora": "^8.0.1",
+		"prettier": "^3.2.5",
+		"quicktype-core": "^23.0.107",
+		"ts-node": "^10.9.2",
+		"tsup": "^8.0.2",
+		"typescript": "^5.4.3"
+	}
+}
