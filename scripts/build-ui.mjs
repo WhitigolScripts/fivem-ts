@@ -16,7 +16,6 @@ function buildUI() {
 			`${chalk.blueBright("Info:")} UI directory not found — skipping`,
 		);
 
-		// Make the process hang around and do nothing until the user exits
 		return process.stdin.resume();
 	}
 

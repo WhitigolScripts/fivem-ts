@@ -65,7 +65,6 @@ async function main() {
 				config.output === "./output" &&
 				process.env.NODE_ENV !== "development"
 			) {
-				// Tell the user to change the output directory in build-config.json5
 				console.error(
 					`${chalk.red("Error:")} Please change the output directory in ${chalk.bold("build-config.json5")}`,
 				);
@@ -89,7 +88,6 @@ async function finishBuild() {
 	const root = path.resolve(__dirname, "..");
 	const output = path.resolve(root, config.output);
 	const copySpinner = ora("Copying files").start();
-	// copy is not async, but I still want to await it
 	for (const file of config.copy) {
 		const from = file.from.replace("{OUT}", root);
 		const to = file.to.replace("{OUT}", output);
@@ -110,7 +108,6 @@ async function finishBuild() {
 
 	if (config.obfuscate) {
 		const obfuscateSpinner = ora("Obfuscating files").start();
-		// All .js files in the output directory (search recursively)
 		const files = await fs.promises.readdir(output, {
 			withFileTypes: true,
 			recursive: true,
@@ -145,7 +142,6 @@ async function finishBuild() {
 			)}`,
 		);
 	} else {
-		// Log info about obfuscation being skipped
 		console.log(
 			`${chalk.blueBright("Info:")} skipping obfuscation. To enable obfuscation, set ${chalk.bold("obfuscate")} to ${chalk.bold("true")} in ${chalk.bold("build-config.json5")}`,
 		);
