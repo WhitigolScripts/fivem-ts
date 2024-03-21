@@ -128,3 +128,4 @@ dist
 
 # Whitigol's FiveM Boilerplate
 output/
+.ui/
