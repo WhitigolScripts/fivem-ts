@@ -8,7 +8,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const args = process.argv.slice(2);
 
-const mode = args[0];
+const mode =
+	args.find((arg) => arg.startsWith("--mode="))?.split("=")[1] || "prod";
 
 function buildUI() {
 	if (!fs.existsSync(path.resolve(__dirname, "../.ui"))) {

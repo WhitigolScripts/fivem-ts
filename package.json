@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"description": "A TypeScript boilerplate for FiveM resources.",
 	"scripts": {
-		"build": "cross-env NODE_ENV=production node ./scripts/build.mjs",
-		"dev": "concurrently \"node ./scripts/build.mjs --watch\" \"nodemon\" \"node scripts/build-ui.mjs\" --kill-others --success first --prefix name --names \"SCRIPT,CONFIG,UI\" --prefix-colors \"blue.bold,magenta.bold,green.bold\"",
+		"build": "cross-env NODE_ENV=production node ./scripts/build-ui.mjs --mode=prod && node ./scripts/build.mjs",
+		"dev": "concurrently \"node ./scripts/build.mjs --watch\" \"nodemon\" \"node scripts/build-ui.mjs --mode=dev\" --kill-others --success first --prefix name --names \"SCRIPT,CONFIG,UI\" --prefix-colors \"blue.bold,magenta.bold,green.bold\"",
 		"test": "node scripts/test.mjs",
 		"add-ui": "pnpm dlx @whitigol/create-fivem-ui"
 	},

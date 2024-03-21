@@ -85,26 +85,25 @@ async function main() {
 }
 
 async function finishBuild() {
+	const spinner = ora(`Copying files`).start();
 	const root = path.resolve(__dirname, "..");
 	const output = path.resolve(root, config.output);
-	const copySpinner = ora("Copying files").start();
 	for (const file of config.copy) {
+		spinner.text = `Copying ${file.from} to ${file.to}`;
 		const from = file.from.replace("{OUT}", root);
 		const to = file.to.replace("{OUT}", output);
-		const spinner = ora(`Copying ${from} to ${to}`).start();
 		await new Promise((resolve, reject) => {
 			copy(from, to, (err) => {
 				if (err) {
 					spinner.fail(`Failed to copy ${from} to ${to}`);
 					reject(err);
 				} else {
-					spinner.succeed(`Copied ${from} to ${to}`);
 					resolve();
 				}
 			});
 		});
 	}
-	copySpinner.succeed("Copied files");
+	spinner.succeed("Copied files");
 
 	if (config.obfuscate) {
 		const obfuscateSpinner = ora("Obfuscating files").start();

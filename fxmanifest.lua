@@ -1,8 +1,8 @@
 fx_version 'cerulean'
 game 'gta5'
 
-client_script 'dist/client.js'
-server_script 'dist/server.js'
+client_script 'dist/server/index.js'
+server_script 'dist/client/index.js'
 
 files {'nui/**/*', 'stream/**/*', "data/**/*", 'config.json'}
 
