@@ -15,7 +15,7 @@
 		"@citizenfx/client": "latest",
 		"@citizenfx/server": "latest",
 		"@types/node": "^20.11.30",
-		"@whitigol/fivem-utils": "^1.1.1",
+		"@whitigol/fivem-utils": "^1.1.2",
 		"@whitigol/menu-api": "latest",
 		"chalk": "^5.3.0",
 		"concurrently": "^8.2.2",

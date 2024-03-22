@@ -15,8 +15,8 @@ devDependencies:
     specifier: ^20.11.30
     version: 20.11.30
   '@whitigol/fivem-utils':
-    specifier: ^1.1.1
-    version: 1.1.1
+    specifier: ^1.1.2
+    version: 1.1.2
   '@whitigol/menu-api':
     specifier: latest
     version: 1.0.4
@@ -534,8 +534,8 @@ packages:
     resolution: {integrity: sha512-FCTsikRozryfayPuiI46QzH3fnrOoctTjvOYZkho9BTFLCOZ2rgZJHMOVgCOfttjPJcgOx52EpkY0CMfy87MIw==}
     dev: true
 
-  /@whitigol/fivem-utils@1.1.1:
-    resolution: {integrity: sha512-YtE+NZzbhCU8l665/W1rGxSCxVXAucqmehxuEWtL/7z5DYIcgpN+9jIjBdUQfhpt401obfrue6k6iNLptNTKPQ==}
+  /@whitigol/fivem-utils@1.1.2:
+    resolution: {integrity: sha512-OUNS9NU/IuoiG3Rz5WcH7cjdqqGH1jz4tapz4ejEQb2jFAEF2Pipm1W9BJ6nbbtbscxjysFOyugUs+EsKLVV6g==}
     dev: true
 
   /@whitigol/menu-api@1.0.4:
