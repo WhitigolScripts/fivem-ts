@@ -12,7 +12,10 @@ import obfuscator from "javascript-obfuscator";
 dotenv.config();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const rawConfig = fs.readFileSync(path.resolve(__dirname, "../build-config.json5"), "utf-8");
+const rawConfig = fs.readFileSync(
+	path.resolve(__dirname, "../build-config.json5"),
+	"utf-8",
+);
 const config = JSON5.parse(rawConfig);
 
 const args = process.argv.slice(2);
@@ -66,7 +69,10 @@ async function clientBuild() {
 async function main() {
 	try {
 		await new Promise((resolve, reject) => {
-			if (config.output === "./output" && process.env.NODE_ENV !== "development") {
+			if (
+				config.output === "./output" &&
+				process.env.NODE_ENV !== "development"
+			) {
 				console.error(
 					`${chalk.red("Error:")} Please change the output directory in ${chalk.bold("build-config.json5")}`,
 				);
@@ -78,7 +84,11 @@ async function main() {
 		serverBuild();
 		clientBuild();
 	} catch (_) {
-		ora().start().fail("Failed to build project. Please check the error message above.");
+		ora()
+			.start()
+			.fail(
+				"Failed to build project. Please check the error message above.",
+			);
 	}
 }
 
@@ -105,14 +115,17 @@ async function finishBuild() {
 
 	if (config.obfuscate) {
 		const obfuscateSpinner = ora("Obfuscating files").start();
-		const files = await fs.promises.readdir(output, {
+		const files = await fs.promises.readdir(path.join(output, "dist"), {
 			withFileTypes: true,
 			recursive: true,
 		});
 		let obfuscatedFiles = [];
 		for (const file of files) {
 			if (file.isFile() && file.name.endsWith(".js")) {
-				const code = await fs.promises.readFile(path.resolve(output, file.path, file.name), "utf-8");
+				const code = await fs.promises.readFile(
+					path.resolve(output, file.path, file.name),
+					"utf-8",
+				);
 				const obfuscated = obfuscator.obfuscate(code, {
 					compact: true,
 					controlFlowFlattening: true,
@@ -130,7 +143,9 @@ async function finishBuild() {
 				obfuscatedFiles.push(file.name);
 			}
 		}
-		obfuscateSpinner.succeed(`Obfuscated ${obfuscatedFiles.length} files: ${obfuscatedFiles.join(", ")}`);
+		obfuscateSpinner.succeed(
+			`Obfuscated ${obfuscatedFiles.length} files: ${obfuscatedFiles.join(", ")}`,
+		);
 	} else {
 		console.log(
 			`${chalk.blueBright("Info:")} skipping obfuscation. To enable obfuscation, set ${chalk.bold("obfuscate")} to ${chalk.bold("true")} in ${chalk.bold("build-config.json5")}`,
