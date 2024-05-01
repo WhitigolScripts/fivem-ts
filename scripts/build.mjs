@@ -25,6 +25,7 @@ async function serverBuild() {
 	const spinner = ora("Building server").start();
 	await build({
 		entryPoints: ["src/server/index.ts"],
+		noExternal: [/(.*)/],
 		bundle: true,
 		outDir: "dist/server",
 		format: "cjs",
@@ -93,9 +94,18 @@ async function main() {
 }
 
 async function finishBuild() {
-	const spinner = ora(`Copying files`).start();
 	const root = path.resolve(__dirname, "..");
 	const output = path.resolve(root, config.output);
+
+	const deleteSpinner = ora("Deleting old build").start();
+	// Delete all files inside the output directory, but not the output directory itself
+	const files = await fs.promises.readdir(output);
+	for (const file of files) {
+		await fs.promises.rm(path.resolve(output, file), { recursive: true });
+	}
+	deleteSpinner.succeed("Deleted old build");
+
+	const spinner = ora(`Copying files`).start();
 	for (const file of config.copy) {
 		spinner.text = `Copying ${file.from} to ${file.to}`;
 		const from = file.from.replace("{OUT}", root);
